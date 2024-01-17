@@ -21,6 +21,11 @@ DB_NAME = "gym"
 ```
 5. Run Python: Flask
 
+## Test login details
+* Member: 1001 - 1003
+* Trainer: 2001 - 2007
+* Manager: 3001
+
 ## Pythonanywhere deployment adjustments:
 1. add `dbconn.execute("SET time_zone = 'Pacific/Auckland';")` to db.py just after `dbconn = connection.cursor()` for setting timezone for the connection
 2. Comment out the `BackgroundScheduler` in `autopay.py` that doesn't allow to import in pythonanywhere

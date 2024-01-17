@@ -7,9 +7,7 @@ The Gym Management System seeks automation for its 1000 members and 10 trainers.
     * Run Final_Scheme_with_data.sql in your Workbench
 2. Create a virtual environment for installing Flask
 3. Pip install all the dependencies (pip install -r requirements.txt)
-4. Local DB config
-    * Create config.py in the root directory.
-    * Copy this content into it.
+4. Set up the local DB config.py
     * Change the values based on your MySQL setup
 ```
 SECRET_KEY="dev"

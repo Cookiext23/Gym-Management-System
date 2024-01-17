@@ -9,15 +9,7 @@ The Gym Management System seeks automation for its 1000 members and 10 trainers.
 3. Pip install all the dependencies (pip install -r requirements.txt)
 4. Set up the local DB config.py
     * Change the values based on your MySQL setup
-```
-SECRET_KEY="dev"
-DB_USER = "root"
-DB_PASS = "root"
-DB_HOST = "localhost"
-DB_PORT = "3306"
-DB_NAME = "gym"
-```
-4. Run Python: Flask
+5. Run Python: Flask
 
 ## Pythonanywhere deployment adjustments:
 1. add `dbconn.execute("SET time_zone = 'Pacific/Auckland';")` to db.py just after `dbconn = connection.cursor()` for setting timezone for the connection

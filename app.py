@@ -4,23 +4,25 @@ from flask import render_template
 from werkzeug.exceptions import HTTPException
 import base64
 
+
 def base64_decode(value):
     try:
-        return base64.b64decode(value).decode('utf-8')
+        return base64.b64decode(value).decode("utf-8")
     except Exception:
         return value
+
 
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
     app.config.from_pyfile("config.py", silent=True)
-    app.jinja_env.filters['b64decode'] = base64_decode
     import db
+
     # Error page
 
     @app.errorhandler(Exception)
     def handle_exception(e):
-    # Log the exception
+        # Log the exception
         app.logger.error(e)
 
         # Get the error code, name, and description
@@ -34,18 +36,28 @@ def create_app():
             error_description = e.description
 
         # Render the error template
-        return render_template('error.html', error_code=error_code, error_name=error_name, error_description=error_description), error_code
-    
+        return (
+            render_template(
+                "error.html",
+                error_code=error_code,
+                error_name=error_name,
+                error_description=error_description,
+            ),
+            error_code,
+        )
+
     # Home page
     @app.route("/")
     def home():
         import db
+
         db = db.get_db()
         db.execute("SELECT * FROM News order by UpdateDate DESC;")
         allnews = db.fetchall()
         user_id = session.get("user_id")
         if user_id:
-            db.execute("""SELECT s.StartDate, 
+            db.execute(
+                """SELECT s.StartDate, 
                         s.StartTime,
                         s.EndTime, 
                         s.Room, 
@@ -54,12 +66,19 @@ def create_app():
                         inner join Schedule s on s.ScheduleID = b.ScheduleID 
                         inner join Training t on t.TrainingID = s.TrainingID
                         WHERE b.MemberID = %s AND s.StartDate > CURDATE()
-                        order by TIMESTAMP(s.StartDate, s.StartTime) LIMIT 3;""",(user_id,))
+                        order by TIMESTAMP(s.StartDate, s.StartTime) LIMIT 3;""",
+                (user_id,),
+            )
         upcoming_booking = db.fetchall()
         upcoming_booking_cols = [desc[0] for desc in db.description]
         # upcoming_booking = []
         # upcoming_booking_cols = []
-        return render_template("base.html", allnews = allnews, upcoming_booking=upcoming_booking, upcoming_booking_cols = upcoming_booking_cols)
+        return render_template(
+            "base.html",
+            allnews=allnews,
+            upcoming_booking=upcoming_booking,
+            upcoming_booking_cols=upcoming_booking_cols,
+        )
 
     # # auto membership fee paying
     # @app.before_first_request
@@ -102,11 +121,9 @@ def create_app():
     app.register_blueprint(news.bp)
     app.register_blueprint(autopay.bp)
     app.register_blueprint(membersdue.bp)
-   
+
     app.register_blueprint(popularclasses.bp)
 
     app.add_url_rule("/", endpoint="index")
 
-
-    
     return app

@@ -26,6 +26,17 @@ DB_NAME = "gym"
 * Trainer: 2001 - 2007
 * Manager: 3001
 
+## Demo
+* ### Home page
+  ![Home page](https://github.com/Cookiext23/Gym-Management-System-/assets/109332897/e4b1abc5-b3a3-4fe3-aefa-2eeb3120862d)
+
+* ### Training session booking
+  ![Training session booking](https://github.com/Cookiext23/Gym-Management-System-/assets/109332897/be825c6f-2b94-469b-8c98-63341e9d4495)
+
+* ### Member management
+  <img width="1290" alt="Member management" src="https://github.com/Cookiext23/Gym-Management-System-/assets/109332897/5bf2bab1-319b-4b98-ad10-46a527ffab3b">
+
+
 ## Pythonanywhere deployment adjustments:
 1. add `dbconn.execute("SET time_zone = 'Pacific/Auckland';")` to db.py just after `dbconn = connection.cursor()` for setting timezone for the connection
 2. Comment out the `BackgroundScheduler` in `autopay.py` that doesn't allow to import in pythonanywhere

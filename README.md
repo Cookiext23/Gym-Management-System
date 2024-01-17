@@ -5,7 +5,7 @@ The Gym Management System seeks automation for its 1000 members and 10 trainers.
 
 1. Populate database
     * Run Final_Scheme_with_data.sql in your Workbench
-2. pip install all the dependencies (pip install -r requirements.txt)
+2. Pip install all the dependencies (pip install -r requirements.txt)
 3. Local DB config
     * Create config.py in the root directory.
     * Copy this content into it.

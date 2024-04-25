@@ -1,5 +1,5 @@
 ## About the project
-The Gym Management System seeks automation for its 1000 members and 10 trainers. The system tracks subscriptions, facilitates bookings, and manages attendance for gym use, specialized sessions, and classes (a certain attendance limit).
+The Gym Management System is designed to automate the management of member and trainer information, including tracking subscriptions, booking classes, recording gym usage and class attendance, and displaying regular reports.
 
 ## Technologies
 Project is created with:

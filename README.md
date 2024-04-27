@@ -8,6 +8,7 @@ Project is created with:
 
 
 ## Demo
+🔗 [LIVE DEMO](https://cookiext23.pythonanywhere.com/)
 * ### Home page
   ![Home page](https://github.com/Cookiext23/Gym-Management-System-/assets/109332897/e4b1abc5-b3a3-4fe3-aefa-2eeb3120862d)
 
